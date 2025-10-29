@@ -1,6 +1,5 @@
 package m35455_6;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import tallerMecanico.garage.Reparacion;
 import tallerMecanico.garage.Servicio;
@@ -9,14 +8,6 @@ import tallerMecanico.personas.LegajoInvalido;
 import tallerMecanico.personas.Tecnico;
 
 public class M35455_6 {
-
-    private static Date parseFecha(String valor) {
-        try {
-            return new SimpleDateFormat("dd/MM/yyyy").parse(valor);
-        } catch (Exception e) {
-            return new Date();
-        }
-    }
 
     public static void main(String[] args) {
         try {
@@ -31,13 +22,13 @@ public class M35455_6 {
             Vehiculo vehiculoUno = new Vehiculo(1L, "EDR500");
             Vehiculo vehiculoDos = new Vehiculo(2L, "HEE201");
 
-            Tecnico tecnicoUno = new Tecnico(1_001L, "José Quiroga", parseFecha("01/03/2020"),
+            Tecnico tecnicoUno = new Tecnico(1_001L, "José Quiroga", new Date(120, 2, 1),
                     50_123L, "Electricidad en general");
-            Tecnico tecnicoDos = new Tecnico(1_502L, "Laura Romero", parseFecha("15/07/2021"),
+            Tecnico tecnicoDos = new Tecnico(1_502L, "Laura Romero", new Date(121, 6, 15),
                     65_890L, "Mecánica integral");
 
-            System.out.println("La persona \"" + tecnicoUno.getNombreCompleto() + "\" ha ingresado al Sistema.");
-            System.out.println("La persona \"" + tecnicoDos.getNombreCompleto() + "\" ha ingresado al Sistema.");
+            System.out.println(tecnicoUno.presentarPersonal());
+            System.out.println(tecnicoDos.presentarPersonal());
 
             // 2) Creación de un servicio para cada técnico.
             Servicio servicioElectricidad = new Servicio("01/06/2024 08:30", vehiculoUno, tecnicoUno);
@@ -49,9 +40,6 @@ public class M35455_6 {
             // Servicio adicional para el segundo vehículo.
             Servicio servicioMotor = new Servicio("02/06/2024 09:15", vehiculoDos, tecnicoDos);
             servicioMotor.asignarServicio(vehiculoDos, tecnicoDos);
-
-            System.out.println("Servicios activos en el vehículo EDR500: " + vehiculoUno.getServicios().size());
-            System.out.println("Servicios activos en el vehículo HEE201: " + vehiculoDos.getServicios().size());
 
             // 4) Cancelación de uno de los servicios.
             boolean servicioCancelado = vehiculoUno.cancelarServicio(tecnicoUno);
@@ -67,11 +55,11 @@ public class M35455_6 {
                     1);
             Reparacion reparacionDos = new Reparacion(
                     "Frenos en general",
-                    "Cambiar pastillas delanteras",
+                    "Cambiar pastillas",
                     2);
             Reparacion reparacionTres = new Reparacion(
                     "Mejorar Motor",
-                    "Rectificar cilindros, no cambiar pistón",
+                    "Rectificar cilindros, cambiar pistón y aros",
                     5);
             Reparacion reparacionCuatro = new Reparacion(
                     "Radiador",

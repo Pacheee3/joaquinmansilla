@@ -56,4 +56,9 @@ public abstract class  Personal {
 
     
     public abstract String obtenerDatosPersonal();
+
+    public String presentarPersonal() {
+        String nombre = nombreCompleto == null ? "" : nombreCompleto;
+        return "La persona \"" + nombre + "\" ha ingresado al Sistema.";
+    }
 }
