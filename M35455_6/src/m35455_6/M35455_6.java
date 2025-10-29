@@ -11,9 +11,6 @@ public class M35455_6 {
 
     public static void main(String[] args) {
         try {
-            System.out.println("============================");
-            System.out.println("  Taller Mecánico - Simulación");
-            System.out.println("============================\n");
 
             // Intento fallido para demostrar la validación del legajo.
             try {
@@ -89,8 +86,6 @@ public class M35455_6 {
             System.out.println("Historial de reparaciones:\n");
             vehiculoUno.mostrarHistorialReparaciones();
             vehiculoDos.mostrarHistorialReparaciones();
-
-            System.out.println("Fin de la simulación.");
         } catch (LegajoInvalido e) {
             System.out.println("No se pudo registrar a un técnico: " + e.getMessage());
         }
