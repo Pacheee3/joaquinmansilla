@@ -1,12 +1,10 @@
-
 package tallerMecanico.personas;
 
 import java.util.Date;
 import tallerMecanico.garage.Reparacion;
 import tallerMecanico.garage.Vehiculo;
 
-
-public class Tecnico extends Personal{
+public class Tecnico extends Personal {
     private Long numeroMatriculaProfesional;
     private String especialidad;
 
@@ -14,7 +12,7 @@ public class Tecnico extends Personal{
     }
 
     public Tecnico(Long legajo, String nombreCompleto, Date fechaIngreso,
-                   Long numeroMatriculaProfesional, String especialidad) throws LegajoInvalido {
+            Long numeroMatriculaProfesional, String especialidad) throws LegajoInvalido {
         super(legajo, nombreCompleto, fechaIngreso);
         this.numeroMatriculaProfesional = numeroMatriculaProfesional;
         this.especialidad = especialidad;
@@ -40,10 +38,7 @@ public class Tecnico extends Personal{
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
     }
-
-    
- 
-     /**
+    /**
      * 10) Establece relación entre Vehiculo y Reparacion llamando a efectuarReparacion().
      */
     public void especificarReparacion(Vehiculo vehiculo, Reparacion reparacion) {
@@ -58,8 +53,8 @@ public class Tecnico extends Personal{
      */
     @Override
     public String obtenerDatosPersonal() {
-        String m   = (numeroMatriculaProfesional == null ? "null" : String.valueOf(numeroMatriculaProfesional));
-        String esp = (especialidad == null ? "null" : especialidad);
+        String m = numeroMatriculaProfesional == null ? "null" : String.valueOf(numeroMatriculaProfesional);
+        String esp = especialidad == null ? "null" : especialidad;
         return datosBase() + " " + m + " " + esp;
     }
 }

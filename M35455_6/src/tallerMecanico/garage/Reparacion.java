@@ -1,7 +1,4 @@
-
 package tallerMecanico.garage;
-
-
 
 public class Reparacion {
 
@@ -45,15 +42,33 @@ public class Reparacion {
     @Override
     public String toString() {
         String texto = "    ";
-        if (nombreReparacion != null) {
+        boolean agregoInformacion = false;
+
+        if (nombreReparacion != null && nombreReparacion.length() > 0) {
             texto += nombreReparacion;
+            agregoInformacion = true;
         }
+
         if (descripcion != null && descripcion.length() > 0) {
-            texto += ". " + descripcion;
+            if (agregoInformacion) {
+                texto += ". ";
+            }
+            texto += descripcion;
+            agregoInformacion = true;
         }
+
         if (horasTrabajo != null) {
-            texto += ". " + horasTrabajo + " días.";
+            if (agregoInformacion) {
+                texto += ". ";
+            }
+            texto += horasTrabajo + " horas.";
+            agregoInformacion = true;
         }
+
+        if (!agregoInformacion) {
+            texto += "(reparación sin datos)";
+        }
+
         return texto;
     }
 }

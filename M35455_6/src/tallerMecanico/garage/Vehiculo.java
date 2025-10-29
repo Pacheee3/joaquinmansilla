@@ -7,12 +7,9 @@ import tallerMecanico.personas.Tecnico;
 public class Vehiculo {
 
     private Long numeroFichaTecnica;
-
     private String matricula;
-
-    private final List<Servicio> servicios = new ArrayList<>();
-
-    private final List<Reparacion> reparaciones = new ArrayList<>();
+    private final List<Servicio> servicios = new ArrayList<Servicio>();
+    private final List<Reparacion> reparaciones = new ArrayList<Reparacion>();
 
     public Vehiculo() {
     }
@@ -65,23 +62,25 @@ public class Vehiculo {
     }
 
     /**
-     * 4) Da de baja un servicio buscando por el técnico asociado. 
+     * 4) Da de baja un servicio buscando por el técnico asociado.
      * Devuelve true si lo encontró y eliminó; false en caso contrario.
      */
     public boolean cancelarServicio(Tecnico tecnico) {
         if (tecnico == null) {
             return false;
         }
+
         for (int i = 0; i < servicios.size(); i++) {
-            Servicio s = servicios.get(i);
-            if (tecnico.equals(s.getTecnico())) {
-                s.setVehiculo(null);
+            Servicio servicio = servicios.get(i);
+            if (tecnico.equals(servicio.getTecnico())) {
+                servicio.setVehiculo(null);
                 servicios.remove(i);
                 return true;
             }
         }
         return false;
     }
+
     /**
      * 5) Agrega una reparación al array.
      */
@@ -100,8 +99,8 @@ public class Vehiculo {
         if (reparaciones.isEmpty()) {
             System.out.println("    (Sin reparaciones registradas)");
         } else {
-            for (Reparacion r : reparaciones) {
-                System.out.println(r);
+            for (Reparacion reparacion : reparaciones) {
+                System.out.println(reparacion);
             }
         }
         System.out.println();

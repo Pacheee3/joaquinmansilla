@@ -1,10 +1,8 @@
-
 package tallerMecanico.personas;
 
 import java.util.Date;
 
-
-public abstract class  Personal {
+public abstract class Personal {
     private Long legajo;
     private String nombreCompleto;
     private Date fechaIngreso;

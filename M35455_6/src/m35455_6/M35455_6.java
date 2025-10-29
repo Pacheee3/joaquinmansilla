@@ -11,12 +11,18 @@ public class M35455_6 {
 
     public static void main(String[] args) {
         try {
+            System.out.println("============================");
+            System.out.println("  Taller Mecánico - Simulación");
+            System.out.println("============================\n");
+
             // Intento fallido para demostrar la validación del legajo.
             try {
                 new Tecnico(0L, "Legajo Inválido", new Date(), 0L, "N/A");
             } catch (LegajoInvalido e) {
-                System.out.println(e.getMessage());
+                System.out.println("Intento de alta inválido: " + e.getMessage());
             }
+
+            System.out.println();
 
             // 1) Creación de 2 vehículos y 2 técnicos.
             Vehiculo vehiculoUno = new Vehiculo(1L, "EDR500");
@@ -30,8 +36,8 @@ public class M35455_6 {
             Tecnico tecnicoDos = new Tecnico(1_502L, "Laura Romero", fechaIngresoLaura,
                     65_890L, "Mecánica integral");
 
-            System.out.println("La persona \"" + tecnicoUno.getNombreCompleto() + "\" ha ingresado al Sistema.");
-            System.out.println("La persona \"" + tecnicoDos.getNombreCompleto() + "\" ha ingresado al Sistema.");
+            System.out.println("La persona \"" + tecnicoUno.getNombreCompleto() + "\" ha ingresado al sistema.");
+            System.out.println("La persona \"" + tecnicoDos.getNombreCompleto() + "\" ha ingresado al sistema.\n");
 
             // 2) Creación de un servicio para cada técnico.
             Servicio servicioElectricidad = new Servicio("01/06/2024 08:30", vehiculoUno, tecnicoUno);
@@ -53,6 +59,8 @@ public class M35455_6 {
                     + tecnicoUno.getNombreCompleto() + ": " + (servicioCancelado ? "Sí" : "No"));
             System.out.println("Servicios activos en el vehículo EDR500 tras cancelar: "
                     + vehiculoUno.getServicios().size());
+
+            System.out.println();
 
             // 5) Creación de cuatro reparaciones asignadas a los vehículos.
             Reparacion reparacionUno = new Reparacion(
@@ -78,8 +86,11 @@ public class M35455_6 {
             tecnicoUno.especificarReparacion(vehiculoDos, reparacionCuatro);
 
             // 6) Historial de reparaciones de los vehículos.
+            System.out.println("Historial de reparaciones:\n");
             vehiculoUno.mostrarHistorialReparaciones();
             vehiculoDos.mostrarHistorialReparaciones();
+
+            System.out.println("Fin de la simulación.");
         } catch (LegajoInvalido e) {
             System.out.println("No se pudo registrar a un técnico: " + e.getMessage());
         }

@@ -1,29 +1,28 @@
-
 package tallerMecanico.garage;
 
 import tallerMecanico.personas.Tecnico;
 
-
 public class Servicio {
-    private String fechayHora;
+
+    private String fechaYHora;
     private Vehiculo vehiculo;
     private Tecnico tecnico;
 
     public Servicio() {
     }
 
-    public Servicio(String fechayHora, Vehiculo vehiculo, Tecnico tecnico) {
-        this.fechayHora = fechayHora;
+    public Servicio(String fechaYHora, Vehiculo vehiculo, Tecnico tecnico) {
+        this.fechaYHora = fechaYHora;
         this.vehiculo = vehiculo;
         this.tecnico = tecnico;
     }
 
-    public String getFechayHora() {
-        return fechayHora;
+    public String getFechaYHora() {
+        return fechaYHora;
     }
 
-    public void setFechayHora(String fechayHora) {
-        this.fechayHora = fechayHora;
+    public void setFechaYHora(String fechaYHora) {
+        this.fechaYHora = fechaYHora;
     }
 
     public Vehiculo getVehiculo() {
@@ -48,7 +47,7 @@ public class Servicio {
         }
 
         this.vehiculo = vehiculo;
-        this.tecnico  = tecnico;
+        this.tecnico = tecnico;
         vehiculo.confirmarServicio(this);
     }
 
