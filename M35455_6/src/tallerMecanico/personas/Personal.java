@@ -12,18 +12,14 @@ public abstract class  Personal {
     public Personal() {
     }
 
-    public Personal(Long legajo, String nombreCompleto, Date fechaIngreso) {
-        this.legajo = legajo;
+    public Personal(Long legajo, String nombreCompleto, Date fechaIngreso) throws LegajoInvalido {
+        setLegajo(legajo);
         this.nombreCompleto = nombreCompleto;
         this.fechaIngreso = fechaIngreso;
     }
 
     public Long getLegajo() {
         return legajo;
-    }
-
-    public void setLegajo(Long legajo) {
-        this.legajo = legajo;
     }
 
     public String getNombreCompleto() {
@@ -41,10 +37,10 @@ public abstract class  Personal {
     public void setFechaIngreso(Date fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
-    
-       public void setLegajo() throws legajoInvalido{
+
+    public void setLegajo(Long legajo) throws LegajoInvalido {
         if (legajo == null || legajo < 1 || legajo > 999_999) {
-            throw new legajoInvalido("El legajo es incorrecto. El rango de valores permitidos es entre 1 y 999.999.");
+            throw new LegajoInvalido("El legajo es incorrecto. El rango de valores permitidos es entre 1 y 999.999.");
         }
         this.legajo = legajo;
     }

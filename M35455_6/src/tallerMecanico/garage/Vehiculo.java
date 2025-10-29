@@ -50,7 +50,16 @@ public class Vehiculo {
      * 3) Establece un nuevo servicio para el vehículo (agrega al array).
      */
     public void confirmarServicio(Servicio servicio) {
-        if (servicio != null) {
+        if (servicio == null) {
+            return;
+        }
+
+        Vehiculo vehiculoServicio = servicio.getVehiculo();
+        if (vehiculoServicio == null) {
+            servicio.setVehiculo(this);
+        }
+
+        if (!servicios.contains(servicio)) {
             servicios.add(servicio);
         }
     }
@@ -66,6 +75,7 @@ public class Vehiculo {
         for (int i = 0; i < servicios.size(); i++) {
             Servicio s = servicios.get(i);
             if (tecnico.equals(s.getTecnico())) {
+                s.setVehiculo(null);
                 servicios.remove(i);
                 return true;
             }
@@ -87,8 +97,12 @@ public class Vehiculo {
     public void mostrarHistorialReparaciones() {
         System.out.println("Vehículo -> N° Ficha: " + numeroFichaTecnica + " - Matrícula: " + matricula);
         System.out.println("Reparaciones:");
-        for (Reparacion r : reparaciones) {
-            System.out.println(r);
+        if (reparaciones.isEmpty()) {
+            System.out.println("    (Sin reparaciones registradas)");
+        } else {
+            for (Reparacion r : reparaciones) {
+                System.out.println(r);
+            }
         }
         System.out.println();
     }

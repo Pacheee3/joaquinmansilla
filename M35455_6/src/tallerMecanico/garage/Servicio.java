@@ -43,12 +43,13 @@ public class Servicio {
     }
     
     public void asignarServicio(Vehiculo vehiculo, Tecnico tecnico) {
+        if (vehiculo == null || tecnico == null) {
+            return;
+        }
+
         this.vehiculo = vehiculo;
         this.tecnico  = tecnico;
-        // 9) llamar a confirmarServicio()
-        if (vehiculo != null) {
-            vehiculo.confirmarServicio(this);
-        }
+        vehiculo.confirmarServicio(this);
     }
-    
+
 }
