@@ -4,7 +4,7 @@ package tallerMecanico.garage;
 
 
 public class Reparacion {
-    
+
     private String nombreReparacion;
     private String descripcion;
     private Integer horasTrabajo;
@@ -41,6 +41,18 @@ public class Reparacion {
     public void setHorasTrabajo(Integer horasTrabajo) {
         this.horasTrabajo = horasTrabajo;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("    ");
+        sb.append(nombreReparacion == null ? "Sin nombre" : nombreReparacion);
+        if (descripcion != null && !descripcion.isBlank()) {
+            sb.append(". ").append(descripcion.trim());
+        }
+        if (horasTrabajo != null) {
+            sb.append(". ").append(horasTrabajo).append(" días.");
+        }
+        return sb.toString();
+    }
 }
