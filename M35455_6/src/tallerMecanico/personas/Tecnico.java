@@ -1,6 +1,7 @@
 
 package tallerMecanico.personas;
 
+import java.util.Date;
 import tallerMecanico.garage.Reparacion;
 import tallerMecanico.garage.Vehiculo;
 
@@ -10,6 +11,13 @@ public class Tecnico extends Personal{
     private String especialidad;
 
     public Tecnico() {
+    }
+
+    public Tecnico(Long legajo, String nombreCompleto, Date fechaIngreso,
+                   Long numeroMatriculaProfesional, String especialidad) throws LegajoInvalido {
+        super(legajo, nombreCompleto, fechaIngreso);
+        this.numeroMatriculaProfesional = numeroMatriculaProfesional;
+        this.especialidad = especialidad;
     }
 
     public Tecnico(Long numeroMatriculaProfesional, String especialidad) {
@@ -39,9 +47,10 @@ public class Tecnico extends Personal{
      * 10) Establece relación entre Vehiculo y Reparacion llamando a efectuarReparacion().
      */
     public void especificarReparacion(Vehiculo vehiculo, Reparacion reparacion) {
-        if (vehiculo != null && reparacion != null) {
-            vehiculo.efectuarReparacion(reparacion);
+        if (vehiculo == null || reparacion == null) {
+            throw new IllegalArgumentException("Vehículo y reparación son obligatorios.");
         }
+        vehiculo.efectuarReparacion(reparacion);
     }
 
     /**
